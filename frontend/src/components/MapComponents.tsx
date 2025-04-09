@@ -55,12 +55,12 @@ const mapOptions = {
     }
   ]
 };
-// Google Maps API Key는 환경변수로 관리하는 것이 좋습니다.
+// Google Maps API Key는 환경변수로 관리하는 것이 좋음 googleMapsApiKey="" 에 Api key입력.
 // process.env.REACT_APP_GOOGLE_MAPS_API_KEY  
 
 const MapComponent: React.FC<MapComponentProps> = ({ feeds }) => {
   return (
-    <LoadScript googleMapsApiKey="AIzaSyCAitJS8w-JCK90vmJvhnJrQirFwAyyGPI">
+    <LoadScript googleMapsApiKey="">
       <GoogleMap
         mapContainerStyle={containerStyle}
         center={center}
