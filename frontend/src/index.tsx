@@ -5,7 +5,11 @@ import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import './index.css';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
+import { Client as Styletron } from 'styletron-engine-atomic';
+import { Provider as StyletronProvider } from 'styletron-react';
+import { BaseProvider, LightTheme } from 'baseui';
+
+const engine = new Styletron();
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -13,14 +17,12 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+    <StyletronProvider value={engine}>
+      <BaseProvider theme={LightTheme}>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </BaseProvider>
+    </StyletronProvider>
   </React.StrictMode>
 );
-
-reportWebVitals();
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals

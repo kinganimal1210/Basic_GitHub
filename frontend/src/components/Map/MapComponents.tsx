@@ -16,6 +16,9 @@ const center = {
 };
 
 const mapOptions = {
+  disableDefaultUI: true,
+  draggableCursor: "default",
+  draggingCursor: "pointer",
   styles: [
     {
       featureType: "administrative",
@@ -26,6 +29,7 @@ const mapOptions = {
         }
       ] 
     },
+
     {
       featureType: "poi",
       elementType: "labels",
@@ -60,7 +64,8 @@ const mapOptions = {
 
 const MapComponent: React.FC<MapComponentProps> = ({ feeds }) => {
   return (
-    <LoadScript googleMapsApiKey="">
+    //AIzaSyCAitJS8w-JCK90vmJvhnJrQirFwAyyGPI <-Google Maps API Key
+    <LoadScript googleMapsApiKey="AIzaSyCAitJS8w-JCK90vmJvhnJrQirFwAyyGPI">
       <GoogleMap
         mapContainerStyle={containerStyle}
         center={center}
