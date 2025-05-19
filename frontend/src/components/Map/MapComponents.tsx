@@ -3,6 +3,7 @@ import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
 
 interface MapComponentProps {
   feeds: any[];
+  onMapLoad: (map: google.maps.Map) => void;
 }
 
 const containerStyle = {
@@ -62,7 +63,7 @@ const mapOptions = {
 // Google Maps API Key는 환경변수로 관리하는 것이 좋음 googleMapsApiKey="" 에 Api key입력.
 // process.env.REACT_APP_GOOGLE_MAPS_API_KEY  
 
-const MapComponent: React.FC<MapComponentProps> = ({ feeds }) => {
+const MapComponent: React.FC<MapComponentProps> = ({ feeds, onMapLoad }) => {
   return (
     //AIzaSyCAitJS8w-JCK90vmJvhnJrQirFwAyyGPI <-Google Maps API Key
     <LoadScript googleMapsApiKey="AIzaSyCAitJS8w-JCK90vmJvhnJrQirFwAyyGPI">
@@ -71,6 +72,7 @@ const MapComponent: React.FC<MapComponentProps> = ({ feeds }) => {
         center={center}
         zoom={12}
         options={mapOptions}
+        onLoad={mapInstance => onMapLoad(mapInstance)}
       >
         {feeds.map(feed => (
           <Marker
